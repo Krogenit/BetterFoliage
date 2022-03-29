@@ -19,6 +19,16 @@ class SimpleBlockMatcher(vararg val classes: Class<*>) : IBlockMatcher {
     }
 }
 
+class BlackListBlockMatcher(domain: String, path: String) : BlackWhiteListConfigOption<Class<*>>(domain, path) {
+    override fun convertValue(line: String) = getJavaClass(line)
+
+    fun blocked(block: Block): Boolean {
+        val blockClass = block.javaClass
+        blackList.forEach { if (it.isAssignableFrom(blockClass)) return true }
+        return false
+    }
+}
+
 class ConfigurableBlockMatcher(domain: String, path: String) : IBlockMatcher, BlackWhiteListConfigOption<Class<*>>(domain, path) {
     override fun convertValue(line: String) = getJavaClass(line)
 

@@ -95,7 +95,7 @@ fun renderWorldBlock(dispatcher: BlockRendererDispatcher,
     return if (doBaseRender) dispatcher.renderBlock(state, pos, blockAccess, worldRenderer) else false
 }
 
-fun canRenderBlockInLayer(block: Block, state: IBlockState, layer: BlockRenderLayer) = block.canRenderInLayer(state, layer) || layer == targetCutoutLayer
+fun canRenderBlockInLayer(block: Block, state: IBlockState, layer: BlockRenderLayer) = block.canRenderInLayer(state, layer) || (layer == targetCutoutLayer && !Config.blocks.unsupportedBlockList.blocked(state.block))
 
 val targetCutoutLayer: BlockRenderLayer get() = if (Minecraft.getMinecraft().gameSettings.mipmapLevels > 0) CUTOUT_MIPPED else CUTOUT
 val otherCutoutLayer: BlockRenderLayer get() = if (Minecraft.getMinecraft().gameSettings.mipmapLevels > 0) CUTOUT else CUTOUT_MIPPED

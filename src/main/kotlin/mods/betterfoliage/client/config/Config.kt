@@ -52,6 +52,7 @@ object Config : DelegatingConfig(BetterFoliageMod.MOD_ID, BetterFoliageMod.DOMAI
         val lilypad = ConfigurableBlockMatcher(BetterFoliageMod.DOMAIN, "lilypad_default.cfg")
         val cactus = ConfigurableBlockMatcher(BetterFoliageMod.DOMAIN, "cactus_default.cfg")
         val netherrack = ConfigurableBlockMatcher(BetterFoliageMod.DOMAIN, "netherrack_blocks_default.cfg")
+        val unsupportedBlockList = BlackListBlockMatcher(BetterFoliageMod.DOMAIN, "unsupported_block_list_default.cfg")
 
         val leavesWhitelist = OBSOLETE
         val leavesBlacklist = OBSOLETE
